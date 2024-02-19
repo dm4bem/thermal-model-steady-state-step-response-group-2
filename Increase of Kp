@@ -1,0 +1,5 @@
+We then increase the proportional coefficient (Kp) of the controller from 1e3 to 1e5 in the thermal model, it means that the controller reacts much more aggressively to deviations between the measured temperature and the set temperature. 
+By changing this coefficient, we can observe that the time step required to solve the model stably becomes too small as he passes from 50 s to less than 10 s (0,647 s), which can lead to numerical stability issues. Indeed, a too small time step can result in performance issues or even script termination, as we hace noticed. To use a higher Kp while avoiding issues with too small time steps, it may be necessary to adjust other parameters of the controller or the thermal model to ensure stability and performance of the system. For instance, adding to this modification, neglecting the air glass capacity allows for an increase in this time step (which becomes 2 h). 
+
+if controller:
+    TC['G']['q11'] = 1e5
